@@ -1,0 +1,19 @@
+{
+  "name": "invert-markdown-table",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harttle/invert-markdown-table.git"
+  },
+  "author": "harttle<yangjvn@126.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harttle/invert-markdown-table/issues"
+  },
+  "homepage": "https://github.com/harttle/invert-markdown-table#readme"
+}
