@@ -7,16 +7,16 @@
 <body>
   <style>
   #markdown {
-    width: 100%
+    width: 100%;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
   }
   </style>
   <textarea id="markdown" name="markdown" rows="24"> 
-| 浏览器                | iOS  <sup>\*</sup> | PC                   | Android  <sup>\*</sup> |
-| -------------------   | -----------------  | -------------------- | --------------------- |
-| `:focus`              | 不可用             | 持续到失去焦点       | 松开时进入，持续到失去焦点         |
-| `:hover`              | 按下时进入，持续到失去焦点     | 悬停期间                 | 按下时进入，持续到失去焦点         |
-| `:active`             | 按下期间，但需绑定事件       | 鼠标左键<sup>*</sup>按下期间 | 按下期间                  |
-| `tap-highlight-color` | 按下期间，进入时稍有延迟      | 不可用                  | 按下期间                  |
+| Features | Safari | Chrome | Firefox |
+| -------  | ------ | ------ | ------- |
+| sw.js    | Yes    | Yes    | No      |
+| Fetch    | Yes    | Yes    | Yes     |
+| Manifest | No     | Yes    | No      |
   </textarea>
   <button id="invert">Do Invert!</button>
 
