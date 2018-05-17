@@ -17,7 +17,7 @@ function invertMarkdownTable(markdown) {
     var lines = markdown.split('\n').map(function (line) {
         var columns = line.replace(/^\s*\|/, '').replace(/\|\s*$/, '').split('|').map(trim);
         columns.maxLength = columns.reduce(function (prev, curr) {
-            return Math.max(prev, curr.length);
+            return Math.max(prev, wordLength(curr));
         }, 0);
         maxColumn = Math.max(columns.length, maxColumn);
         return columns;
@@ -38,7 +38,9 @@ function invertMarkdownTable(markdown) {
     .map(function (revertedLine) {
         return revertedLine
         .map(function (cell, i) {
-            return pad(cell, lines[i].maxLength);
+            return i < revertedLine.length - 1
+                ? pad(cell, lines[i].maxLength)
+                : cell;
         })
         .join(' | ');
     })
@@ -46,8 +48,26 @@ function invertMarkdownTable(markdown) {
     return text;
 }
 
+// 1 for English characters, 'us' -> 2
+// 2 for Chinese characters, '我们' -> 4
+function wordLength(word) {
+    return Array.prototype.reduce.call(word, function (prev, char) {
+        return prev + characterLength(char);
+    }, 0);
+}
+
+function characterLength(char) {
+    if (/[\u4E00-\u9FA5]/.test(char)) {
+        return 2;
+    }
+    if (/[\uFE30-\uFFA0]/.test(char)) {
+        return 2;
+    }
+    return 1;
+}
+
 function pad(word, len) {
-    return word + array(' ', len).join('').substr(word.length);
+    return word + array(' ', len).join('').substr(wordLength(word));
 }
 function trim(word) {
     return word.trim();
