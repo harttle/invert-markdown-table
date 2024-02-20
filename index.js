@@ -44,8 +44,12 @@ function invertMarkdownTable(markdown) {
         })
         .join(' | ');
     })
+    .map(
+        function(line) {
+            return "|" + line + "|"
+        }
+    )
     .join('\n');
-    return text;
 }
 
 // 1 for English characters, 'us' -> 2
